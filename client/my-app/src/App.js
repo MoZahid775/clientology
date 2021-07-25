@@ -1,25 +1,142 @@
-import logo from './logo.svg';
 import './App.css';
+import {Switch, Link, Route, withRouter, Redirect, BrowserRouter} from 'react-router-dom'
+import {useState, useEffect } from 'react';
+import NavBar from './Components/NavBar';
+import Register from './Components/Register';
+import Login from './Components/Login';
+import Home from './Components/Home';
+
+
+
 
 function App() {
+
+  const [currentUser,setCurrentUser]=useState({
+    id: 0,
+    username:'',
+    name:"",
+    age:0,
+    email:"",
+    token:""
+    // clients: [],
+    // notes: []
+    })
+
+
+//FUNCTION TO HANDLE THE SUBMISSION OF LOGIN DETAILS
+
+const handleLoginSubmit = (formData) => {
+  console.log(formData)
+
+  // fetch("http://localhost:3000/login", {
+  //     method: "POST",
+  //     headers: {
+  //         "Content-type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       formData
+  //     })
+  //     })
+  //     .then(res => res.json())
+  //     .then((res) => handleResponse(res))
+}
+
+//HELPER FUNCTION FOR THE LOGIN SUBMIT
+
+let handleResponse= (resp) => {
+  // console.log(resp)
+  // console.log(resp.user)
+  // if(resp.token){
+  //   setCurrentUser({
+  //     id: resp.user.id,
+  //     username: resp.user.username,
+  //     name: resp.user.name,
+  //     age: resp.user.age,
+  //     email: resp.user.email,
+  //     token: resp.token,
+  //     clients: resp.clients,
+  //     notes: resp.notes
+  //   })
+
+  //   localStorage.token = resp.token
+  //   props.history.push("/user")
+    
+  // } else {
+  //   alert("Please try again. Username or password is incorrect")
+  // }
+}
+
+const renderForm = (routerProps) => {
+  if(routerProps.location.pathname === "/login"){
+    return <Login 
+      formName="Login Form"
+      handleSubmit={handleLoginSubmit}
+    />
+  } else if (routerProps.location.pathname === "/register") {
+    return <Register
+      formName="Register Form"
+      // handleSubmit={handleRegisterSubmit}
+    />
+  }
+}
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div style={{ 
+      backgroundImage: `url('https://cdn.luxe.digital/media/2019/09/12085245/men-style-guide-tom-ford-store-luxury-luxe.digital.jpg')`,
+      // backgroundRepeat: 'no-repeat',(was originally 1950px)
+      width:'1200px'
+      }}>
+        <NavBar 
+        // logOut={logOut}
+        />
+        <Switch>
+         {/* FIRST ROUTE */}
+        <Route path="/login" render={ renderForm } />
+        <Route path="/register" render={ renderForm } />
+        {/* <Route path="/user" render={ renderProfile } /> */}
+        {/* <Route path="/openings/:id/games" render= { renderOpeningGames } />
+        <Route path="/learn" render={ renderLearn } /> */}
+        <Route path={'/'} >
+        <Home />
+        </Route> 
+        </Switch>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
     </div>
+
+
+
   );
 }
 
-export default App;
+export default withRouter(App);
