@@ -33,7 +33,7 @@ export default function NavBar(props) {
                 <Link to={'/'}
                 style={{ textDecoration: 'none' }}>
                 <button 
-                // onClick={props.logOut}
+                onClick={props.logOut}
                 >Log Out</button>
                 </Link>
        
