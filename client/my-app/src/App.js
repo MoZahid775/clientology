@@ -7,7 +7,7 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 //APP.JS ORDER 
 //LOGIN AND OUT
-
+//REGISTER
 
 
 
@@ -86,8 +86,36 @@ const logOut = () => {
 }
 
 
+//REGISTRATION----FUNCTION TO HANDLE SUBMISSION OF RESIGSTRATION
+
+const handleRegisterSubmit = (formData) => {
+  console.log(formData)
+
+  fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json"
+      },
+      body: JSON.stringify(
+          formData
+      )
+      })
+      .then(res => res.json())
+      .then((res) => handleRegisterResponse(res))
+}
+
+//REGISTRATION----FUNCTION TO HANDLE THE REGISTRATION RESPONSE
 
 
+let handleRegisterResponse = (resp) => {
+  console.log(resp)
+  if(resp.id){
+    alert("New User Registered!")
+    props.history.push("/login")
+  }
+  else {alert(resp.errors)
+}
+}
 
 
 
@@ -100,7 +128,7 @@ const renderForm = (routerProps) => {
   } else if (routerProps.location.pathname === "/register") {
     return <Register
       formName="Register Form"
-      // handleSubmit={handleRegisterSubmit}
+      handleSubmit={handleRegisterSubmit}
     />
   }
 }
@@ -117,7 +145,6 @@ console.log(currentUser)
       }}>
         <NavBar logOut={logOut}/>
         <Switch>
-         {/* FIRST ROUTE */}
         <Route path="/login" render={ renderForm } />
         <Route path="/register" render={ renderForm } />
         {/* <Route path="/user" render={ renderProfile } /> */}

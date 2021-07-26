@@ -11,33 +11,28 @@ export default function NavBar(props) {
 
     return (
         <div>
-     
-                <Link to={'/'}
-                style={{ textDecoration: 'none' }}>
+           
+                <Link to={'/'}>
                 <div className="home">
                 <button>Home</button>
                 </div>
                 </Link>
-                <Link to={'/login'}
-                style={{ textDecoration: 'none' }}>
+                <Link to={'/login'}>
                 <div className="login">
                 <button>Login</button>
                 </div>
                 </Link>
-                <Link to={'/register'}
-                style={{ textDecoration: 'none' }}>
+                <Link to={'/register'}>
                 <div className="register">
                 <button>Signup</button>
                 </div>
                 </Link>
-                <Link to={'/'}
-                style={{ textDecoration: 'none' }}>
+                <Link to={'/'}>
                 <button 
                 onClick={props.logOut}
                 >Log Out</button>
-                </Link>
-       
-          
+                </Link>  
+
         </div>
     )
 }
