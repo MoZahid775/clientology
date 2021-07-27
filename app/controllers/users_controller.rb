@@ -25,9 +25,7 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:formData][:password])
             # wristband = JWT.encode({user_id: user.id}, 'password_that_you_should_change')
             wristband = encode_token({user_id: user.id})
-            render json: {user: UserSerializer.new(user), token: wristband, 
-            clients: user.clients, 
-        #     notes: user.notes
+            render json: {user: UserSerializer.new(user), token: wristband, clients: user.clients, notes: user.notes
         }
         else
             render json: {error: "incorrect username or password"}

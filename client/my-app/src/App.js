@@ -10,7 +10,7 @@ import User from './Components/User';
 //LOGIN AND OUT
 //REGISTER
 //CLIENTS
-
+//NOTES
 
 
 function App(props) {
@@ -180,6 +180,73 @@ const deleteClientFromState = (deletedId) => {
    console.log(currentUser.clients)
 }
 
+//NOTES---------------ADD NOTE TO STATE IN THE FRONT
+
+
+const addNoteToState = (newlyCreatedNote) => {
+  // console.log(currentUser)
+ let copyOfNotes= [...currentUser.notes, newlyCreatedNote]
+//  console.log(newlyCreatedNote)
+//  console.log(copyOfNotes)
+
+
+ setCurrentUser({
+  id: currentUser.id,
+  username: currentUser.username,
+  name: currentUser.name,
+  age: currentUser.age,
+  email: currentUser.email,
+  token: currentUser.token,
+  clients: currentUser.clients,
+  notes: copyOfNotes
+ })
+
+//  console.log(currentUser)
+
+}
+
+
+//NOTES------------DELETE NOTE FROM STATE IN THE FRONT
+  const deleteNoteFromState = (deletedId) => {
+   
+
+    let copyOfNotes = currentUser.notes.filter((noteObj) => {
+      return noteObj.id !== deletedId
+    })
+    setCurrentUser({
+      id: currentUser.id,
+      username: currentUser.username,
+      name: currentUser.name,
+      age: currentUser.age,
+      email: currentUser.email,
+      token: currentUser.token,
+      clients: currentUser.clients,
+      notes: copyOfNotes
+    })
+    
+  }
+
+
+
+//RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A GAME
+const handleNoteSubmit = (formData) => {
+ 
+
+  fetch("http://localhost:3000/notes", {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json",
+          "authorization": currentUser.token
+      },
+      body: JSON.stringify({
+        note: formData.note,
+        opening_id: formData.opening_id
+      })
+      })
+      .then(res => res.json())
+      .then((res) => addNoteToState(res))
+}
+
 
 
 //RENDERING OF DIFFERENT ROUTES ETC
@@ -207,6 +274,27 @@ const renderProfile = (routerProps) => {
 }
 
 
+const renderClientNotes = (routerProps) => {
+  // console.log(currentUser)
+  let clientNotes = currentUser.notes.filter((noteObj) => {
+    return noteObj.client_id == Number(routerProps.match.params.id)
+  })
+  return (<Note user={currentUser}
+  clientNotes={clientNotes} deleteNoteFromState={deleteNoteFromState}
+  handleNoteSubmit={handleNoteSubmit}/>
+    )
+  
+}
+
+
+
+
+
+
+
+
+
+
 
 console.log(currentUser)
 
@@ -223,8 +311,8 @@ console.log(currentUser)
         <Route path="/login" render={ renderForm } />
         <Route path="/register" render={ renderForm } />
         <Route path="/user" render={ renderProfile } />
-        {/* <Route path="/clients/:id/notes" render= { renderClientNotes } />
-        <Route path="/learn" render={ renderLearn } /> */}
+        <Route path="/clients/:id/notes" render= { renderClientNotes } />
+        {/* <Route path="/learn" render={ renderLearn } /> */}
         <Route path={'/'} >
         <Home />
         </Route> 
