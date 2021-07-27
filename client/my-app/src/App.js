@@ -5,6 +5,7 @@ import NavBar from './Components/NavBar';
 import Register from './Components/Register';
 import Login from './Components/Login';
 import Home from './Components/Home';
+import User from './Components/User';
 //APP.JS ORDER 
 //LOGIN AND OUT
 //REGISTER
@@ -20,9 +21,9 @@ function App(props) {
     name:"",
     age:0,
     email:"",
-    token:""
-    // clients: [],
-    // notes: []
+    token:"",
+    clients: [],
+    notes: []
     })
 
 
@@ -78,9 +79,9 @@ const logOut = () => {
     name:"",
     age:0,
     email:"",
-    token:""
-    // clients: [],
-    // notes: []
+    token:"",
+    clients: [],
+    notes: []
   })
   localStorage.clear()
 
@@ -120,6 +121,68 @@ let handleRegisterResponse = (resp) => {
 
 
 
+
+
+// CLIENT------------- THIS IS OUR HANDLE SUBMIT FOR SUBMITTING AN CLIENT
+const handleClientSubmit = (formData) => {
+   
+  fetch("http://localhost:3000/clients", {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json",
+          "authorization": currentUser.token
+      },
+      body: JSON.stringify(
+        formData
+      )
+      })
+      .then(res => res.json())
+      .then((res) => addClientToState(res))
+}
+
+
+//CLIENT-------------- CHANGE THE STATE OF CLIENTS IN ZE FRONT
+const addClientToState = (newlyCreatedClient) => {
+  console.log(currentUser.clients)
+ let copyOfClients= [...currentUser.clients, newlyCreatedClient]
+ console.log(newlyCreatedClient)
+ console.log(copyOfClients)
+
+
+ setCurrentUser({
+  id: currentUser.id,
+  username: currentUser.username,
+  name: currentUser.name,
+  age: currentUser.age,
+  email: currentUser.email,
+  token: currentUser.token,
+  clients: copyOfClients,
+  notes: currentUser.notes
+ })
+}
+
+//CLIENT-------------DELETE CLIENT FROM STATE IN THE FRONT
+const deleteClientFromState = (deletedId) => {
+  // console.log(deletedId)
+   let copyOfClients = currentUser.clients.filter((clientObj) => {
+     return clientObj.id !== deletedId
+   })
+   setCurrentUser({
+    id: currentUser.id,
+    username: currentUser.username,
+    name: currentUser.name,
+    age: currentUser.age,
+    email: currentUser.email,
+    token: currentUser.token,
+    clients: copyOfClients,
+    notes: currentUser.notes
+   })
+   console.log(currentUser.clients)
+}
+
+
+
+//RENDERING OF DIFFERENT ROUTES ETC
 const renderForm = (routerProps) => {
   if(routerProps.location.pathname === "/login"){
     return <Login 
@@ -134,13 +197,24 @@ const renderForm = (routerProps) => {
   }
 }
 
+const renderProfile = (routerProps) => {
+  return <User user={currentUser}
+  Clients={currentUser.clients}
+  clientSubmit={handleClientSubmit}
+  deleteClient={deleteClientFromState}
+  history={props.history}
+  />
+}
+
+
+
 console.log(currentUser)
 
 
   return (
 
     <div style={{ 
-      backgroundImage: `url('https://cdn.luxe.digital/media/2019/09/12085245/men-style-guide-tom-ford-store-luxury-luxe.digital.jpg')`,
+      backgroundImage: `url('https://c4.wallpaperflare.com/wallpaper/154/723/662/floral-pattern-wallpaper-preview.jpg')`,
       // backgroundRepeat: 'no-repeat',(was originally 1950px)
       width:'1200px'
       }}>
@@ -148,7 +222,7 @@ console.log(currentUser)
         <Switch>
         <Route path="/login" render={ renderForm } />
         <Route path="/register" render={ renderForm } />
-        {/* <Route path="/user" render={ renderProfile } /> */}
+        <Route path="/user" render={ renderProfile } />
         {/* <Route path="/clients/:id/notes" render= { renderClientNotes } />
         <Route path="/learn" render={ renderLearn } /> */}
         <Route path={'/'} >
@@ -191,3 +265,5 @@ console.log(currentUser)
 }
 
 export default withRouter(App);
+
+//https://c4.wallpaperflare.com/wallpaper/154/723/662/floral-pattern-wallpaper-preview.jpg

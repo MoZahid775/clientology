@@ -4,7 +4,7 @@ import Client from './Client';
 
 
 export default function User(props) {
-    const classes = useStyles();
+ 
     
     // STATE NUMBER 1
     const [name, setName]=useState("")
@@ -32,8 +32,13 @@ export default function User(props) {
             phone: phone,
             birthday: birthday
         }      
-            props.openingSubmit(formData)
-    
+            props.clientSubmit(formData)
+            setName("")
+            setAge(0)
+            setEmail("")
+            setProfession("")
+            setPhone("")
+            setBirthday("")
       }
     
     
@@ -69,8 +74,6 @@ export default function User(props) {
 
 
 
-console.log(props)
-
     return (
         <div>
             <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Welcome, {props.user.name} </h1>
@@ -84,15 +87,31 @@ console.log(props)
             {arrayOfComponents}
             <h4 align="center" style={{ backgroundColor: 'rgba(0, 11, 26, 0.9)', color: 'rgba(250, 250, 255, 1)'}}
             >Add a New Client: </h4>
-                  <form className={classes.root} noValidate autoComplete="off" align="center" style={{ 
+                  <form noValidate autoComplete="off" align="center" style={{ 
                      backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
-                     <input label="Client Name" onChange={handleChangeName} value={name}></input>
+                     <br></br>    
+                     <p>Client Name</p>
+                     <input placeHolder="Client Name" label="Client Name" onChange={handleChangeName} value={name}></input>
+                     <br></br>
+                     <p>Age</p>
                      <input label="Age" onChange={handleChangeAge} value={age}></input>
-                     <input label="Email" onChange={handleChangeEmail} value={email}></input>
-                     <input label="Profession" onChange={handleChangeProfession} value={profession}></input>
-                     <input label="Phone" onChange={handleChangePhone} value={phone}></input>
-                     <input label="Birthday" onChange={handleChangeBirthday} value={birthday}></input>
+                     <br></br>
+                     <p>Email</p>
+                     <input placeHolder="Email" label="Email" onChange={handleChangeEmail} value={email}></input>
+                     <br></br>
+                     <p>Profession</p>
+                     <input placeHolder="Profession" label="Profession" onChange={handleChangeProfession} value={profession}></input>
+                     <br></br>
+                     <p>Phone</p>
+                     <input placeHolder="Phone" label="Phone" onChange={handleChangePhone} value={phone}></input>
+                     <br></br>
+                     <p>Birthday</p>
+                     <input placeHolder="Birthday" label="Birthday" onChange={handleChangeBirthday} value={birthday}></input>
+                     <br></br>
+                     <br></br>
                      <button type="submit" value="submit" onClick={submitClientHandler}>Submit</button>
+                     <br></br>
+                     <br></br>
                   </form>
             <br></br>
             <br></br>

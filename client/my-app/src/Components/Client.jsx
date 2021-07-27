@@ -5,7 +5,7 @@ import {useState } from 'react';
 export default function Client(props) {
 
 
-    const [client, setclient] = useState({
+    const [client, setClient] = useState({
         client: ''
       })
     
@@ -36,21 +36,16 @@ export default function Client(props) {
 
 
 
-
     return (
   <div>
-      <card style={{ 
-        color: 'rgba(250, 250, 255, 1)',
-        backgroundColor: 'rgba(0, 11, 26, .7)'}}
-        classes={{root: state.raised ? classes.cardHovered : ""}}
-        onMouseOver={()=>setState({ raised: true, shadow:3})} 
-        onMouseOut={()=>setState({ raised:false, shadow:1 })} 
-        raised={state.raised} zdepth={state.shadow}
-        onClick={handleClick}> 
+       <card style={{ 
+        color: 'rgba(20, 250, 255, 1)'}}> 
         <h3>{props.client.name}</h3>
         <p>{props.client.profession}</p>
-       </card>
-        <button size="small" onClick={deleteHandler}>Delete</button>
+        <button>Profile</button>
+        <button onClick={handleClick}>Notes</button>
+        </card>
+        <button onClick={deleteHandler}>Delete</button>
   </div>
     )
 }
