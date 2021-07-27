@@ -8,6 +8,7 @@ import Home from './Components/Home';
 //APP.JS ORDER 
 //LOGIN AND OUT
 //REGISTER
+//CLIENTS
 
 
 
@@ -148,7 +149,7 @@ console.log(currentUser)
         <Route path="/login" render={ renderForm } />
         <Route path="/register" render={ renderForm } />
         {/* <Route path="/user" render={ renderProfile } /> */}
-        {/* <Route path="/openings/:id/games" render= { renderOpeningGames } />
+        {/* <Route path="/clients/:id/notes" render= { renderClientNotes } />
         <Route path="/learn" render={ renderLearn } /> */}
         <Route path={'/'} >
         <Home />
