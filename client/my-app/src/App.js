@@ -6,6 +6,8 @@ import Register from './Components/Register';
 import Login from './Components/Login';
 import Home from './Components/Home';
 import User from './Components/User';
+import Note from './Components/Note';
+
 //APP.JS ORDER 
 //LOGIN AND OUT
 //REGISTER
@@ -30,7 +32,7 @@ function App(props) {
 //LOGIN AND OUT-------FUNCTION TO HANDLE THE SUBMISSION OF LOGIN DETAILS
 
 const handleLoginSubmit = (formData) => {
-  console.log(formData)
+
 
   fetch("http://localhost:3000/login", {
       method: "POST",
@@ -48,9 +50,7 @@ const handleLoginSubmit = (formData) => {
 //LOGIN AND OUT------HELPER FUNCTION FOR THE LOGIN SUBMIT
 
 let handleResponse= (resp) => {
-  console.log(resp)
-  console.log(resp.user)
-  console.log(resp.token)
+
   if(resp.token){
     setCurrentUser({
       id: resp.user.id,
@@ -228,9 +228,9 @@ const addNoteToState = (newlyCreatedNote) => {
 
 
 
-//RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A GAME
+//RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A NOTE
 const handleNoteSubmit = (formData) => {
- 
+//  console.log(formData)
 
   fetch("http://localhost:3000/notes", {
       method: "POST",
@@ -240,7 +240,7 @@ const handleNoteSubmit = (formData) => {
       },
       body: JSON.stringify({
         note: formData.note,
-        opening_id: formData.opening_id
+        client_id: formData.client_id
       })
       })
       .then(res => res.json())
@@ -274,24 +274,19 @@ const renderProfile = (routerProps) => {
 }
 
 
-const renderClientNotes = (routerProps) => {
-  // console.log(currentUser)
-  let clientNotes = currentUser.notes.filter((noteObj) => {
-    return noteObj.client_id == Number(routerProps.match.params.id)
-  })
+   const renderClientNotes = (routerProps) => {
+  // console.log(Number(routerProps.match.params.id))
+        let clientNotes = currentUser.notes.filter((noteObj) => {
+         return noteObj.client_id == Number(routerProps.match.params.id)
+         })
   return (<Note user={currentUser}
   clientNotes={clientNotes} deleteNoteFromState={deleteNoteFromState}
-  handleNoteSubmit={handleNoteSubmit}/>
+  handleNoteSubmit={handleNoteSubmit}
+  clientId={Number(routerProps.match.params.id)}
+   />
     )
   
 }
-
-
-
-
-
-
-
 
 
 

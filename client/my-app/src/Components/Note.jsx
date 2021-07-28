@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState } from 'react';
 import AddForm from './AddForm'
-import AddForm from './AddForm'
+
 
 
 
@@ -9,9 +9,10 @@ import AddForm from './AddForm'
 
 
 export default function Note(props) {
-
+       //STATE 1
     const[toggled, setToggled] = useState(false)
-
+       //STATE 2
+    const[client, setClient] = useState(false)
 
 
 // NOTES DELETION BUTTON
@@ -36,10 +37,9 @@ const deleteNoteHandler = (id) => {
     setToggled(!toggled)
   }
   
-  // let gamesOpening = props.user.openings.find((opening) => {
-  //  return opening.id == 
-  // })
-  let arrayOfComponents = prop.clientNotes.map(noteObj => {
+  console.log(props.clientId)
+
+  let arrayOfComponents = props.clientNotes.map(noteObj => {
            return (
                  <card key={noteObj.id} 
                  note={noteObj}
@@ -51,12 +51,14 @@ const deleteNoteHandler = (id) => {
            )})
 
 
+           console.log(client)
     return (
         <div>
             <br></br>
             <button onClick={addNewNote}>Add a new Note</button>
             {toggled ? <AddForm
             handleNoteSubmit={props.handleNoteSubmit} 
+            clientId={props.clientId}
                 />  : null }
           {arrayOfComponents}
         </div>
