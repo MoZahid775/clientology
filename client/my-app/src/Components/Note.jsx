@@ -60,7 +60,10 @@ const deleteNoteHandler = (id) => {
 
            console.log(client)
     return (
-        <div>
+       
+                <div style={{ 
+                     backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
+            <h1 style={{color: 'rgba(250, 250, 255, 1)'}}>Client Notes </h1>
             <br></br>
             <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={addNewNote}>Add a new Note</Button>
             {toggled ? <AddForm

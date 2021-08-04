@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_name: MyString
+  size: MyString
+  date_of_purchase: MyString
+  dollar_amt: 1.5
+  return_indicator: false
+  client: one
+
+two:
+  product_name: MyString
+  size: MyString
+  date_of_purchase: MyString
+  dollar_amt: 1.5
+  return_indicator: false
+  client: two

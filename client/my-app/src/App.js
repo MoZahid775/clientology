@@ -7,12 +7,14 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 import User from './Components/User';
 import Note from './Components/Note';
+import Purchase from './Components/Purchase';
 
 //APP.JS ORDER 
 //LOGIN AND OUT
 //REGISTER
 //CLIENTS
 //NOTES
+//PURCHASES
 
 
 function App(props) {
@@ -28,6 +30,9 @@ function App(props) {
     notes: []
     })
 
+  const [currentPurchases, setCurrentPurchases]=useState({
+    purchases:[]
+    })
 
 //LOGIN AND OUT-------FUNCTION TO HANDLE THE SUBMISSION OF LOGIN DETAILS
 
@@ -62,7 +67,10 @@ let handleResponse= (resp) => {
       clients: resp.clients,
       notes: resp.notes
     })
+     
+    setCurrentPurchases({purchases:resp.purchases})
 
+  
     localStorage.token = resp.token
     props.history.push("/user")
     
@@ -83,6 +91,11 @@ const logOut = () => {
     clients: [],
     notes: []
   })
+  setCurrentPurchases({purchases:[]})
+
+
+
+
   localStorage.clear()
 
 }
@@ -221,7 +234,7 @@ const addNoteToState = (newlyCreatedNote) => {
 
 
 
-//RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A NOTE
+//NOTES------RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A NOTE
 const handleNoteSubmit = (formData) => {
 //  console.log(formData)
 
@@ -238,6 +251,60 @@ const handleNoteSubmit = (formData) => {
       })
       .then(res => res.json())
       .then((res) => addNoteToState(res))
+}
+
+
+//PURCHASES---------------ADD PURCHASE TO STATE IN THE FRONT
+
+
+const addPurchaseToState = (newlyCreatedPurchase) => {
+  // console.log(currentUser)
+ let copyOfPurchases= [...currentPurchases.purchases, newlyCreatedPurchase]
+//  console.log(newlyCreatedNote)
+//  console.log(copyOfNotes)
+
+
+ setCurrentPurchases({
+  purchases: copyOfPurchases
+ })
+
+//  console.log(currentUser)
+
+}
+
+
+//PURCHASES------------DELETE A PURCHASE FROM STATE IN THE FRONT
+  const deletePurchaseFromState = (deletedId) => {
+   
+
+    let copyOfPurchases = currentPurchases.purchases.filter((purchaseObj) => {
+      return purchaseObj.id !== deletedId
+    })
+    setCurrentPurchases({
+      purchases: copyOfPurchases
+    })
+    
+  }
+
+
+
+//PURCHASES----RANDOM MISPLACED COMPONENT--------THIS IS OUR HANDLE SUBMIT FOR ADDING A PURCHASE
+const handlePurchaseSubmit = (formData) => {
+//  console.log(formData)
+
+  fetch("http://localhost:3000/purchases", {
+      method: "POST",
+      headers: {
+          "Content-type": "application/json",
+          "authorization": currentUser.token
+      },
+      body: JSON.stringify({
+        purchase: formData.purchase,
+        client_id: formData.client_id
+      })
+      })
+      .then(res => res.json())
+      .then((res) => addPurchaseToState(res))
 }
 
 
@@ -281,10 +348,23 @@ const renderProfile = (routerProps) => {
   
 }
 
-
+const renderClientPurchases = (routerProps) => {
+  // console.log(Number(routerProps.match.params.id))
+        let clientPurchases = currentPurchases.purchases.filter((purchaseObj) => {
+         return purchaseObj.client_id == Number(routerProps.match.params.id)
+         })
+  return (<Purchase user={currentUser}
+  clientPurchases={clientPurchases} deletePurchaseFromState={deletePurchaseFromState}
+  handlePurchaseSubmit={handlePurchaseSubmit}
+  clientId={Number(routerProps.match.params.id)}
+   />
+    )
+  
+}
 
 
 console.log(currentUser)
+console.log(currentPurchases)
 
 
   return (
@@ -300,11 +380,15 @@ console.log(currentUser)
         <Route path="/register" render={ renderForm } />
         <Route path="/user" render={ renderProfile } />
         <Route path="/clients/:id/notes" render= { renderClientNotes } />
+        <Route path="/clients/:id/purchases" render= { renderClientPurchases } />
         {/* <Route path="/learn" render={ renderLearn } /> */}
         <Route path={'/'} >
         <Home />
         </Route> 
         </Switch>
+        <br></br>
+        <br></br>
+        <br></br>
         <br></br>
         <br></br>
         <br></br>

@@ -47,3 +47,15 @@ I had to fall to lose it all
 But in the end it doesn't even matter
 ", client_id:1)
 
+Purchase.create(product_name:"The Gitano Sharp Black Slim Fit Suit", size:"40R", date_of_purchase: "September,7th 2020", dollar_amt: 945.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"The Gitano Sharp Grey Fit Suit", size:"40R", date_of_purchase: "September,7th 2020", dollar_amt: 945.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"The Gitano Sharp Indego Fit Suit", size:"40R", date_of_purchase: "September,7th 2020", dollar_amt: 945.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"Purple Tie", size:"R", date_of_purchase: "August,17th 2020", dollar_amt: 95.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"Green Striped TIe", size:"R", date_of_purchase: "August,17th 2020", dollar_amt: 95.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"Slim Fit Shirt", size:"16", date_of_purchase: "June,27th 2020", dollar_amt: 125.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"Silver cuff links", size:"OFA", date_of_purchase: "June,27th 2020", dollar_amt: 75.50, return_indicator:false, client_id: 1)
+Purchase.create(product_name:"Leather GLoves", size:"M", date_of_purchase: "June,27th 2020", dollar_amt: 105.50, return_indicator:false, client_id: 1)
+
+
+
+
