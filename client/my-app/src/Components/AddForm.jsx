@@ -37,8 +37,9 @@ console.log(props)
 
     return (
         <div>
-            <Form onSubmit={submitHandler}>
-             <h1>{props.formName}</h1>
+            <Form onSubmit={submitHandler} style={{ width: 500}}>
+             <h1 style={{ 
+                color: 'rgba(210, 220, 231, 1)'}}>Add a New Client Note</h1>
              <Form.Field>
              <input 
              label="Note"
@@ -48,7 +49,7 @@ console.log(props)
              onChange={handleNote}></input>
              </Form.Field>
             
-               <Button
+               <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}}
            
                 type="submit"
                  >Submit Note</Button>

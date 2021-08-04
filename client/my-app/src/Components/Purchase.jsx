@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState } from 'react';
-import AddForm from './AddForm'
 import { Button, Card, Image } from 'semantic-ui-react'
+import AddPurchaseForm from './AddPurchaseForm';
 
 
 
@@ -69,7 +69,11 @@ console.log(props)
             <div style={{ 
                      backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
             <h1 style={{color: 'rgba(250, 250, 255, 1)'}}>Purchase History </h1>
-            
+            <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={addNewPurchase}>Add a New Purchase</Button>
+            {toggled ? <AddPurchaseForm
+            handlePurchaseSubmit={props.handlePurchaseSubmit} 
+            clientId={props.clientId}
+                />  : null }
             {arrayOfComponents}
         </div>
     )

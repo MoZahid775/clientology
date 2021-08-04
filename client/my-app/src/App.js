@@ -298,10 +298,9 @@ const handlePurchaseSubmit = (formData) => {
           "Content-type": "application/json",
           "authorization": currentUser.token
       },
-      body: JSON.stringify({
-        purchase: formData.purchase,
-        client_id: formData.client_id
-      })
+      body: JSON.stringify(
+       formData
+      )
       })
       .then(res => res.json())
       .then((res) => addPurchaseToState(res))

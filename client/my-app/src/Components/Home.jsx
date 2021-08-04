@@ -12,7 +12,7 @@ export default function Home() {
            <br></br>
             <Header as="h1" icon textAlign='center'
              style={{ 
-                color: 'rgba(210, 220, 231, 1)'}}>
+                color: 'rgba(215, 225, 235, 1)'}}>
                     <Icon name='users' circular /> <Header.Content> C L I E N T O L O G Y</Header.Content> </Header>
             <Header as='h1' textAlign="center"
             style={{ 
