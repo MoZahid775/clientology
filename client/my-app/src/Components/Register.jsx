@@ -53,7 +53,14 @@ export default function Register(props) {
 
 
     return (
-        <Form style={{backgroundColor: 'rgba(0, 0, 0, 0.6)'}} onSubmit={submitHandler}>
+        <Form style={{backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        width:'700px',
+        position: 'absolute',left: '33%'
+        
+        
+        
+        
+        }} onSubmit={submitHandler}>
             <br></br>
              <h1 style={{  color: 'rgba(210, 220, 231, 1)'}}>{props.formName}</h1>
              <Form.Field>

@@ -79,16 +79,25 @@ export default function User(props) {
 
     return (
         <div>
-            <h1 style={{color: 'rgba(250, 250, 255, 1)'}}>Welcome, {props.user.name} </h1>
+            <div style={{ 
+                     backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
+            <h1 style={{color: 'rgba(250, 250, 255, 1)'}}>Welcome back, {props.user.name} </h1>
             <br></br>
           
           
-            <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Clients: </h1>
+            <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Clients Dashboard </h1>
+            <br></br>
+            </div>
             {arrayOfComponents}
             <br></br>
             <br></br>
+            <br></br>
                   <Form noValidate autoComplete="off" align="center" style={{ 
-                     backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
+                     backgroundColor: 'rgba(0, 0, 0, 0.8)'
+                     
+                     
+                     }}>
+                     <br></br>
                      <h1 style={{  color: 'rgba(210, 220, 231, 1)'}}>Add a New Client</h1>
                      <br></br>    
 
@@ -129,6 +138,8 @@ export default function User(props) {
                      </Form.Field>
                      <br></br>
                      <Button  style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} class="large ui button" type="submit" value="submit" onClick={submitClientHandler}>Submit</Button>
+                     <br></br>
+                     <br></br>
                      <br></br>
                      <br></br>
                   </Form>

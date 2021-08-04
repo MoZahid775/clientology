@@ -290,9 +290,9 @@ console.log(currentUser)
   return (
 
     <div style={{ 
-      backgroundImage: `url('https://c4.wallpaperflare.com/wallpaper/154/723/662/floral-pattern-wallpaper-preview.jpg')`,
-      // backgroundRepeat: 'no-repeat',(was originally 1950px)
-      width:'1200px'
+      backgroundImage: `url('https://cdn.shopify.com/s/files/1/0004/4630/0222/files/Retail_Store_Interior_Design_Moncler_Paris_Gilles_Boissier_Read_more_in_The_Luxurist_at_www.luxdeco.com.jpg?v=1594253221')`,
+      width: window.innerWidth,
+      height: '100%',
       }}>
         <NavBar logOut={logOut}/>
         <Switch>
@@ -305,6 +305,30 @@ console.log(currentUser)
         <Home />
         </Route> 
         </Switch>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <br></br>
         <br></br>
         <br></br>

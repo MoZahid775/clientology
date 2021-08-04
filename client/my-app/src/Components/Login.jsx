@@ -68,7 +68,13 @@ export default function Login(props) {
         // </div>
         
         <Form onSubmit={submitHandler} style={{ 
-          backgroundColor: 'rgba(0, 0, 0, 0.6)'}}
+          backgroundColor: 'rgba(0, 0, 0, 0.6)',
+          width:'700px',
+          position: 'absolute',left: '33%'
+        }}
+          // align="center"
+          
+        
    
          >
            <br></br>
