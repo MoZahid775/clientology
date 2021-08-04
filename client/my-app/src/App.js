@@ -8,6 +8,8 @@ import Home from './Components/Home';
 import User from './Components/User';
 import Note from './Components/Note';
 import Purchase from './Components/Purchase';
+import Learn from './Components/Learn';
+
 
 //APP.JS ORDER 
 //LOGIN AND OUT
@@ -361,9 +363,34 @@ const renderClientPurchases = (routerProps) => {
   
 }
 
+// const renderClientProfile = (routerProps) => {
+//   // console.log(Number(routerProps.match.params.id))
+//         let clientProfile = currentPurchases.purchases.filter((purchaseObj) => {
+//          return purchaseObj.client_id == Number(routerProps.match.params.id)
+//          })
+//   return (<Purchase user={currentUser}
+//   clientPurchases={clientPurchases} deletePurchaseFromState={deletePurchaseFromState}
+//   handlePurchaseSubmit={handlePurchaseSubmit}
+//   clientId={Number(routerProps.match.params.id)}
+//    />
+//     )
+  
+// }
+
+const renderLearn = (routerProps) => {
+  return <Learn />
+}
+
+
+
+
+
+
+
 
 console.log(currentUser)
 console.log(currentPurchases)
+// console.log(currentProfiles)
 
 
   return (
@@ -380,7 +407,8 @@ console.log(currentPurchases)
         <Route path="/user" render={ renderProfile } />
         <Route path="/clients/:id/notes" render= { renderClientNotes } />
         <Route path="/clients/:id/purchases" render= { renderClientPurchases } />
-        {/* <Route path="/learn" render={ renderLearn } /> */}
+        {/* <Route path="/clients/:id/profile" render= { renderclientProfiles} /> */}
+        <Route path="/learn" render={ renderLearn } />
         <Route path={'/'} >
         <Home />
         </Route> 
