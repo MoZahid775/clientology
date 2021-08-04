@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react';
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 
 export default function Login(props) {

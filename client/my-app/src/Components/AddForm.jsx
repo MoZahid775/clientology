@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react';
+import { Button, Form } from 'semantic-ui-react'
 
 
 
@@ -36,27 +37,22 @@ console.log(props)
 
     return (
         <div>
-            <form onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler}>
              <h1>{props.formName}</h1>
+             <Form.Field>
              <input 
              label="Note"
              type="text" 
              autoComplete="off"
              value={note}
              onChange={handleNote}></input>
-            {/* <input 
-             label="client"
-             type="text" 
-             autoComplete="off"
-             name="client"
-             value={client}
-             onChange={handleClient}></input> */}
+             </Form.Field>
             
-               <button
-               label="Submit"
+               <Button
+           
                 type="submit"
-                 value="Submit">Submit Note</button>
-             </form>      
+                 >Submit Note</Button>
+             </Form>      
         </div>
     )
 }

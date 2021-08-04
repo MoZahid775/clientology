@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react';
 import Client from './Client';
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Card } from 'semantic-ui-react'
 
 
 
@@ -88,7 +88,9 @@ export default function User(props) {
             <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Clients Dashboard </h1>
             <br></br>
             </div>
+            <Card.Group>
             {arrayOfComponents}
+            </Card.Group>
             <br></br>
             <br></br>
             <br></br>

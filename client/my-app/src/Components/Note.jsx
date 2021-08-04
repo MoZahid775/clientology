@@ -1,6 +1,8 @@
 import React from 'react'
 import {useState } from 'react';
 import AddForm from './AddForm'
+import { Button, Card, Image } from 'semantic-ui-react'
+
 
 
 
@@ -41,13 +43,18 @@ const deleteNoteHandler = (id) => {
 
   let arrayOfComponents = props.clientNotes.map(noteObj => {
            return (
-                 <card key={noteObj.id} 
+                 <Card style={{ 
+                  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                   color: 'rgba(36, 242, 180, 1)',
+                   width: 500
+                }} 
+                 key={noteObj.id} 
                  note={noteObj}
                  currentUser={props.user}
                  history={props.history} >
                  <p>Notes:{noteObj.note}</p>
-                 <button note={noteObj} onClick={() => {deleteNoteHandler(noteObj.id)}}>Delete</button>   
-                 </card>
+                 <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} note={noteObj} onClick={() => {deleteNoteHandler(noteObj.id)}}>Delete</Button>   
+                 </Card>
            )})
 
 
@@ -55,12 +62,14 @@ const deleteNoteHandler = (id) => {
     return (
         <div>
             <br></br>
-            <button onClick={addNewNote}>Add a new Note</button>
+            <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={addNewNote}>Add a new Note</Button>
             {toggled ? <AddForm
             handleNoteSubmit={props.handleNoteSubmit} 
             clientId={props.clientId}
                 />  : null }
+            
           {arrayOfComponents}
+        
         </div>
     )
 }
