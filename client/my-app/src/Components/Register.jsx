@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react';
-
+import { Button, Form } from 'semantic-ui-react'
 
 
 export default function Register(props) {
@@ -53,12 +53,12 @@ export default function Register(props) {
 
 
     return (
-        <div style={{ 
-            backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
-                    <form onSubmit={submitHandler}>
-             <h1>{props.formName}</h1>
+        <Form style={{backgroundColor: 'rgba(0, 0, 0, 0.6)'}} onSubmit={submitHandler}>
+            <br></br>
+             <h1 style={{  color: 'rgba(210, 220, 231, 1)'}}>{props.formName}</h1>
+             <Form.Field>
+               <label style={{color: 'rgba(210, 220, 231, 1)'}}>Username</label>
              <input
-             label="Username"
              type="text" 
              autoComplete="off"
              name="username"
@@ -66,9 +66,12 @@ export default function Register(props) {
              value={userName}
              onChange={handleChangeUserName}
              htmlFor="username"></input>
-              
+            </Form.Field> 
+
+
+            <Form.Field>
+            <label style={{color: 'rgba(210, 220, 231, 1)'}}>Password</label>
              <input 
-             label="Password"
              type="text"
              htmlFor="password"
              autoComplete="off"
@@ -77,20 +80,24 @@ export default function Register(props) {
              value={password}
              onChange={handleChangePassword}
              htmlFor="password"></input>
+            </Form.Field> 
 
+            <Form.Field> 
+            <label style={{color: 'rgba(210, 220, 231, 1)'}}>Name</label>
              <input 
              htmlFor="name"
-             label="Name"
-             type="name" 
+             type="text" 
              autoComplete="off"
              name="name"
              placeholder="name"
              value={name}
              onChange={handleChangeName}
              htmlFor="Age"></input>
+            </Form.Field> 
 
+            <Form.Field> 
+            <label style={{color: 'rgba(210, 220, 231, 1)'}}>Age</label>
              <input
-            label="age"
             type="text" 
             autoComplete="off"
             placeholder="age"
@@ -98,9 +105,11 @@ export default function Register(props) {
             value={age}
             onChange={handleChangeAge}
             htmlFor="age"></input>
+            </Form.Field> 
 
-             <input 
-             label="email"
+            <Form.Field> 
+            <label style={{color: 'rgba(210, 220, 231, 1)'}}>Email</label>
+             <input           
              htmlFor="email"
              type="text" 
              autoComplete="off"
@@ -109,16 +118,15 @@ export default function Register(props) {
              value={email}
              onChange={handleChangeEmail}
              ></input>
+            </Form.Field> 
 
 
-            <button
-             label="Submit"
-             type="submit"
-             value="Submit">Submit</button>
+            <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} type="submit">Submit</Button>
 
-             </form>
+           
              <br></br>
              <br></br>
-        </div>
+        </Form>
     )
 }
+

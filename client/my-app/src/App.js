@@ -150,14 +150,7 @@ const addClientToState = (newlyCreatedClient) => {
 
 
  setCurrentUser({
-  id: currentUser.id,
-  username: currentUser.username,
-  name: currentUser.name,
-  age: currentUser.age,
-  email: currentUser.email,
-  token: currentUser.token,
-  clients: copyOfClients,
-  notes: currentUser.notes
+  ...currentUser, clients: copyOfClients
  })
 }
 

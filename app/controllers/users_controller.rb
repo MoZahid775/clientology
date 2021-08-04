@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     def me
         wristband = encode_token({user_id: @user.id})
-        render json: {user: UserSerializer.new(@user), token: wristband}
+        render json: {user: UserSerializer.new(@user), token: wristband, client: @user.clients, notes: @user.notes}
     end
     def index
         users = User.all

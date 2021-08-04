@@ -1,6 +1,9 @@
 import React from 'react'
 import {useState} from 'react';
 import Client from './Client';
+import { Button, Form } from 'semantic-ui-react'
+
+
 
 
 export default function User(props) {
@@ -76,43 +79,59 @@ export default function User(props) {
 
     return (
         <div>
-            <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Welcome, {props.user.name} </h1>
+            <h1 style={{color: 'rgba(250, 250, 255, 1)'}}>Welcome, {props.user.name} </h1>
             <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+          
+          
             <h1 variant="h1" style={{color: 'rgba(250, 250, 255, 1)'}}>Clients: </h1>
             {arrayOfComponents}
-            <h4 align="center" style={{ backgroundColor: 'rgba(0, 11, 26, 0.9)', color: 'rgba(250, 250, 255, 1)'}}
-            >Add a New Client: </h4>
-                  <form noValidate autoComplete="off" align="center" style={{ 
-                     backgroundColor: 'rgba(255, 255, 255, 0.9)'}}>
+            <br></br>
+            <br></br>
+                  <Form noValidate autoComplete="off" align="center" style={{ 
+                     backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
+                     <h1 style={{  color: 'rgba(210, 220, 231, 1)'}}>Add a New Client</h1>
                      <br></br>    
-                     <p>Client Name</p>
-                     <input placeHolder="Client Name" label="Client Name" onChange={handleChangeName} value={name}></input>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Client Name</label>
+                     <input placeHolder="Client Name" onChange={handleChangeName} value={name}></input>
                      <br></br>
-                     <p>Age</p>
+                     </Form.Field>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Age</label>
                      <input label="Age" onChange={handleChangeAge} value={age}></input>
                      <br></br>
-                     <p>Email</p>
-                     <input placeHolder="Email" label="Email" onChange={handleChangeEmail} value={email}></input>
+                     </Form.Field>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Email</label>
+                     <input placeHolder="Email" onChange={handleChangeEmail} value={email}></input>
                      <br></br>
-                     <p>Profession</p>
-                     <input placeHolder="Profession" label="Profession" onChange={handleChangeProfession} value={profession}></input>
+                     </Form.Field>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Profession</label>
+                     <input placeHolder="Profession" onChange={handleChangeProfession} value={profession}></input>
                      <br></br>
-                     <p>Phone</p>
+                     </Form.Field>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Phone</label>
                      <input placeHolder="Phone" label="Phone" onChange={handleChangePhone} value={phone}></input>
                      <br></br>
-                     <p>Birthday</p>
+                     </Form.Field>
+
+                     <Form.Field>
+                     <label style={{color: 'rgba(210, 220, 231, 1)'}}>Birthday</label>
                      <input placeHolder="Birthday" label="Birthday" onChange={handleChangeBirthday} value={birthday}></input>
                      <br></br>
+                     </Form.Field>
                      <br></br>
-                     <button type="submit" value="submit" onClick={submitClientHandler}>Submit</button>
+                     <Button  style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} class="large ui button" type="submit" value="submit" onClick={submitClientHandler}>Submit</Button>
                      <br></br>
                      <br></br>
-                  </form>
+                  </Form>
             <br></br>
             <br></br>
             <br></br>

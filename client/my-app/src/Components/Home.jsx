@@ -11,6 +11,7 @@ export default function Home() {
         <div style={{ 
             
             backgroundColor: 'rgba(0, 0, 0, 0.6)'}}>
+                <br></br>
             <h2
              style={{ 
                 color: 'rgba(210, 220, 231, 1)'}}>Welcome to C l i e n t o l o g y</h2>
