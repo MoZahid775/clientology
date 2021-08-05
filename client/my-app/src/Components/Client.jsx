@@ -47,7 +47,7 @@ export default function Client(props) {
 
    
 
-
+      console.log(props.client)
 
     return (
   <div>
@@ -65,6 +65,9 @@ export default function Client(props) {
         <Card.Header style={{color: 'rgba(36, 242, 180, .9)'}}>{props.client.name}</Card.Header>
         <Card.Description style={{color: 'rgba(36, 242, 255, .7)'}}>
           Profession: <strong>{props.client.profession}</strong>
+        </Card.Description>
+        <Card.Description style={{color: 'rgba(36, 242, 255, .7)'}}>
+          Phone: <strong>{props.client.phone}</strong>
         </Card.Description>
         </Card.Content>
        <br></br>

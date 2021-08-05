@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :profiles
   resources :purchases
   resources :notes
   resources :clients
