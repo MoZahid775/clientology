@@ -3,9 +3,9 @@ class PurchasesController < ApplicationController
     before_action :authorized, only: [:create, :destroy]
 
     def create
-        byebug
+      
         purchase = Purchase.create(purchases_params)
-        byebug
+        
         render json: purchase
     end
 

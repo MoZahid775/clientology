@@ -1,30 +1,29 @@
 class ProfilesController < ApplicationController
  
-    # before_action :authorized, only: [:create, :destroy]
+    before_action :authorized, only: [:create, :destroy]
 
-    # def create
-           
-    #     profile = Profile.create(notes_params)
-    #     render json: note
-    # end
+    def create
+        profile = Profile.create(notes_params)
+        render json: profile
+    end
 
 
-    # def destroy
-    #     profile = @user.notes.find(params[:id])
-    #     params
-    #     note.destroy
-    #     render json: {}
-    # end
+    def destroy
+        profile = @user.profiles.find(params[:id])
+        params
+        profile.destroy
+        render json: {}
+    end
 
-    # def index
-    #    notes = Note.all
-    #    render json: notes
+    def index
+       profiles = Profile.all
+       render json: profiles
 
-    # end
+    end
 
-    # def notes_params
-    #     params.permit( :note, :client_id)
-    # end
+    def profiles_params
+        params.permit( :profile, :client_id)
+    end
 
 
 end

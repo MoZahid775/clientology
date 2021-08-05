@@ -45,6 +45,17 @@ export default function Client(props) {
          props.history.push(`/clients/${props.client.id}/purchases`);
       }
 
+
+
+      const handleProfileClick = (e) => {
+        
+        setClient({
+          client: props.client.id
+        })
+        console.log(client)
+    
+         props.history.push(`/clients/${props.client.id}/profile`);
+      }
    
 
       console.log(props.client)
@@ -72,7 +83,7 @@ export default function Client(props) {
         </Card.Content>
        <br></br>
        <Card.Content extra>
-        <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} >Profile</Button>
+        <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={handleProfileClick}>Profile</Button>
         <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={handlePurchaseClick}>Purchase History</Button>
         <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={handleClick}>Notes</Button>
         <Button style={{backgroundColor: 'rgba(210, 220, 231, 1)', color: 'rgba(0, 0, 0, 1)'}} onClick={deleteHandler}>Delete</Button>

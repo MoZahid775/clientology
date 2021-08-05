@@ -9,6 +9,7 @@ import User from './Components/User';
 import Note from './Components/Note';
 import Purchase from './Components/Purchase';
 import Learn from './Components/Learn';
+import Profile from './Components/Profile';
 
 
 //APP.JS ORDER 
@@ -17,6 +18,7 @@ import Learn from './Components/Learn';
 //CLIENTS
 //NOTES
 //PURCHASES
+//PROFILE
 
 
 function App(props) {
@@ -35,6 +37,11 @@ function App(props) {
   const [currentPurchases, setCurrentPurchases]=useState({
     purchases:[]
     })
+
+  const [currentProfiles, setCurrentProfiles]=useState({
+    profiles:[]
+  }) 
+
 
 //LOGIN AND OUT-------FUNCTION TO HANDLE THE SUBMISSION OF LOGIN DETAILS
 
@@ -71,6 +78,7 @@ let handleResponse= (resp) => {
     })
      
     setCurrentPurchases({purchases:resp.purchases})
+    setCurrentProfiles({profiles:resp.profiles})
 
   
     localStorage.token = resp.token
@@ -94,12 +102,13 @@ const logOut = () => {
     notes: []
   })
   setCurrentPurchases({purchases:[]})
+  setCurrentProfiles({profiles:[]})
+
 
 
 
 
   localStorage.clear()
-
 }
 
 
@@ -363,19 +372,21 @@ const renderClientPurchases = (routerProps) => {
   
 }
 
-// const renderClientProfile = (routerProps) => {
-//   // console.log(Number(routerProps.match.params.id))
-//         let clientProfile = currentPurchases.purchases.filter((purchaseObj) => {
-//          return purchaseObj.client_id == Number(routerProps.match.params.id)
-//          })
-//   return (<Purchase user={currentUser}
-//   clientPurchases={clientPurchases} deletePurchaseFromState={deletePurchaseFromState}
-//   handlePurchaseSubmit={handlePurchaseSubmit}
-//   clientId={Number(routerProps.match.params.id)}
-//    />
-//     )
+
+const renderClientProfile = (routerProps) => {
+  // console.log(Number(routerProps.match.params.id))
+        let clientProfile = currentProfiles.profiles.filter((profileObj) => {
+         return profileObj.client_id == Number(routerProps.match.params.id)
+         })
+  return (<Profile user={currentUser}
+  clientProfile={clientProfile} 
+  // deleteProfileFromState={deleteProfileFromState}
+  // handleProfileSubmit={handleProfileSubmit}
+  clientId={Number(routerProps.match.params.id)}
+   />
+    )
   
-// }
+}
 
 const renderLearn = (routerProps) => {
   return <Learn />
@@ -390,7 +401,7 @@ const renderLearn = (routerProps) => {
 
 console.log(currentUser)
 console.log(currentPurchases)
-// console.log(currentProfiles)
+console.log(currentProfiles)
 
 
   return (
@@ -407,7 +418,7 @@ console.log(currentPurchases)
         <Route path="/user" render={ renderProfile } />
         <Route path="/clients/:id/notes" render= { renderClientNotes } />
         <Route path="/clients/:id/purchases" render= { renderClientPurchases } />
-        {/* <Route path="/clients/:id/profile" render= { renderclientProfiles} /> */}
+        <Route path="/clients/:id/profile" render= { renderClientProfile} />
         <Route path="/learn" render={ renderLearn } />
         <Route path={'/'} >
         <Home />

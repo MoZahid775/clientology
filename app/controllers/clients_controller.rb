@@ -6,7 +6,6 @@ class ClientsController < ApplicationController
         render json: client
     end
 
-
     def destroy
         client = @user.clients.find(params[:id])
         client.destroy

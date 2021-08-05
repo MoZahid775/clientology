@@ -3,5 +3,6 @@ class ClientSerializer < ActiveModel::Serializer
   belongs_to :user
   has_many :notes
   has_many :purchases
+  has_one :profile
 
 end
