@@ -1,30 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-
-
-RAILS APIs
+Utilized JSON Web Tokens and localStorage to store encrypted user information client-side 
+Employed JavaScript on the frontend along with the React library 
+The backend is written in Ruby and utilizes the Rails framework 
+A user is able to store clients, notes, purchases and profiles 
 
